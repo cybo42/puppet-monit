@@ -23,7 +23,7 @@ class monit::params {
       $service_program = '/usr/sbin/service'
       case $::operatingsystem {
         'Debian': {
-          if $::lsbmajdistrelease < 8 {
+          if $::operatingsystemmajrelease < 8 {
             $init_system = 'sysv'
           }
           else {
@@ -48,7 +48,7 @@ class monit::params {
       $eventqueue = false
 
       $service_program = '/sbin/service'
-      if $::lsbmajdistrelease < 7 {
+      if $::operatingsystemmajrelease < 7 {
         $init_system = 'sysv'
       }
       else {
@@ -61,4 +61,3 @@ class monit::params {
     }
   }
 }
-

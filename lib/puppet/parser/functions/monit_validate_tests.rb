@@ -177,11 +177,11 @@ module Puppet::Parser::Functions
                   end
                   pt_options = PROTOCOL_TESTS[pt_type]
                   test['protocol_test'].each do |pair|
-                    # Fail if any option is missing.
-                    unless pt_options & pair.keys.map{|key| key.upcase} == pt_options
-                      raise Puppet::ParseError, exception_prefix + "missing options in #{test['protocol']} ckeck: #{pt_options.join(', ')} are mandatory."
-                    end
+                    # Fail if any option is invalid
                     pair.each do |key, value|
+                      unless pt_options && pt_options.include?(key.upcase)
+                        raise Puppet::ParseError, exception_prefix + "invalid option #{key.upcase} in #{test['protocol']} check: valid options = #{pt_options.join(', ')}"
+                      end
                       condition += "\n    #{key.upcase} #{value}"
                     end
                   end
@@ -210,4 +210,3 @@ module Puppet::Parser::Functions
     return tests
   end
 end
-

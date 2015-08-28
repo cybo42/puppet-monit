@@ -9,9 +9,9 @@ module Puppet::Parser::Functions
     # # SPACE TESTING: IF SPACE operator value unit THEN action
     # # INODE TESTING: IF INODE operator value [unit] THEN action
     defined?(RESOURCE_TESTS) or RESOURCE_TESTS = [
-      'CPU', 'CPU(USER)', 'CPU(SYSTEM)', 'CPU(WAIT)', 'TOTAL CPU', 'CHILDREN',
-      'LOADAVG(1MIN)', 'LOADAVG(5MIN)', 'LOADAVG(15MIN)',
-      'TOTAL MEMORY', 'MEMORY', 'SWAP'
+      'CPU', 'CPU(USER)', 'CPU(SYSTEM)', 'CPU(WAIT)', 'TOTAL CPU', 'TOTALCPU',
+      'CHILDREN', 'LOADAVG(1MIN)', 'LOADAVG(5MIN)', 'LOADAVG(15MIN)',
+      'TOTAL MEMORY', 'TOTALMEMORY', 'TOTALMEM', 'MEMORY', 'SWAP'
     ]
     # Valid operators for resource testing.
     defined?(RESOURCE_TESTS_OPERATORS) or RESOURCE_TESTS_OPERATORS = [
